@@ -1,7 +1,9 @@
 # Custom docker image
-Scripts and documentation facilitating creation of customized Docker images and sending them to Kubernetes. All focused on simplicity.
+This repository contains scripts and documentation focused on creating customized Docker images and sending them to Kubernetes. This is a guide for developers, focused on simplicity.
 
-A [minimalistic Docker image of Ubuntu](http://phusion.github.io/baseimage-docker) has been found. 
+In the first step a [minimalistic Docker image of Ubuntu](http://phusion.github.io/baseimage-docker) was found.
+
+## Details regarding the image
 
 With the following Dockerfile:
 ```
@@ -10,37 +12,37 @@ RUN apt-get update
 RUN apt-get -y install iputils-ping
 RUN apt-get -y install mc
 ```
-there are *ping*, *curl* and *mc* commands available, with Midnight Commander mc as a kind of luxurious extension for instances used for development purposes. The baked image weights 323 MB:
+there are *ping*, *curl* and *mc* commands available, with Midnight Commander mc as a kind of luxurious extension for instances used for development purposes. The image weights 323 MB:
 
 ```
 REPOSITORY   TAG SIZE
 tiny-ubuntu  v1  323MB
 ```
 
-## Baking a Docker image
+## Baking it yourself
 
 Start shell/cmd and run the following in the same directory where the [Dockerfile](/Dockerfile) is placed:
 ```
 docker-compose build
 ```
 
-See that the image has been created successfully:
+Verify that the image has been created successfully:
 ```
 docker images --all
 ```
-the command above should result in something like:
+it result in something like:
 ```
 REPOSITORY   TAG    IMAGE ID      CREATED       SIZE
 ubuntu       latest b47cb2d60bbe  39 hours ago  122MB
 tiny-ubuntu  v1     a77509368a8d  4 months ago  225MB
 ```
 
-Run the image (which will result in creating a container):
+Start the image (which will result in creating a container):
 ```
 docker run tiny-ubuntu:v1
 ```
 
-View created container:
+View the created container:
 ```
 docker ps
 ```
@@ -50,7 +52,7 @@ It should display something like:
 CONTAINER ID  IMAGE            COMMAND         CREATED        STATUS        PORTS NAMES
 8d9736464db0  tiny-ubuntu:v1   "/sbin/my_init" 5 minutes ago  Up 5 minutes        nervous_shaw
 ```
-From right now we will use a number of 8d9736464db0 - the container ID, which definitely will be different on your machine. Run shell on a container:
+From right now we will use a kind of random number 8d9736464db0 - this is the container ID, which will be different in your session. Run the Linux shell in container:
 ```
 docker exec -it 8d9736464db0 bash
 ```
