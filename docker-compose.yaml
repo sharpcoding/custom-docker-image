@@ -1,0 +1,6 @@
+version: '2'
+
+services:
+  tiny-ubuntu:
+    build: .
+    image: tiny-ubuntu:v1
