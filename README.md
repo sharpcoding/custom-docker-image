@@ -12,11 +12,11 @@ RUN apt-get update
 RUN apt-get -y install iputils-ping
 RUN apt-get -y install mc
 ```
-there are *ping*, *curl* and *mc* commands available, with Midnight Commander mc as a kind of luxurious extension for instances used for development purposes. The image weights 323 MB:
+there are *ping*, *curl* and *telnet* commands available. The image weights 279 MB:
 
 ```
 REPOSITORY   TAG SIZE
-tiny-ubuntu  v1  323MB
+tiny-ubuntu  v1  279MB
 ```
 
 ## Baking it yourself
